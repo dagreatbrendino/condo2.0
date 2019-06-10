@@ -1,0 +1,203 @@
+/* CAROUSEL */
+
+.display-2 {
+    font-family: 'Crimson Text', serif;
+    font-weight: 700;
+    text-shadow: 3px 2px 8px black;
+    position: absolute;
+    right: 15%;
+    bottom: 47%;
+    left: 15%;
+    z-index: 100;
+    color: #fff;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-family: 'Crimson Text', serif;
+    font-weight: 500;
+    padding-top: .5rem;
+    position: absolute;
+    text-shadow: 3px 2px 8px black;
+    right: 15%;
+    bottom: 39%;
+    left: 15%;
+    z-index: 100;
+    color: #fff;
+    text-align: center;
+}
+
+.youtubeVid {
+    color: rgb(220,53,69);
+    position: absolute;
+    right: 15%;
+    bottom: 27%;
+    left: 15%;
+    z-index: 100;
+    text-align: center;
+}
+
+.youtubeVid:hover {
+    color: rgba(220,53,69,0.8);
+    transform: translateY(1px);
+}
+
+.youtubeVid:active {
+    color: rgb(220,53,69);
+    transform: translateY(3px);
+}
+
+/* FEATURES */
+
+.underline {
+    border-bottom: 4px solid black;
+    font-weight: bold;
+    text-shadow: 4px 2px 6px grey;
+}
+
+.card {
+    background: none;
+}
+
+.card-text {
+    color: rgba(109, 111, 112, 0.966);
+}
+
+.fa-7x {
+    color: rgb(50, 50, 50);
+
+}
+
+.fa-7x:hover {
+    color: rgba(109, 111, 112, 0.966);
+}
+
+/* CONTACT FORM */
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.btn-dark:hover {
+    background-color: rgba(109, 111, 112, 0.966);
+    border-color: rgba(109, 111, 112, 0.966);
+}
+
+.btn-dark:active {
+    background-color: rgb(50, 50, 50);
+    border-color: rgb(50, 50, 50);
+    transform: translateY(3px);
+}
+
+/* ABOUT */
+
+.fa-github {
+    color: rgb(50, 50, 50);
+}
+
+.fa-github:hover {
+    color: rgba(109, 111, 112, 0.966);
+    transform: translateY(1px);
+}
+
+.fa-github:active {
+    color: rgb(19,46,67);
+    transform: translateY(2px);
+}
+
+.fa-linkedin {
+    color: rgb(1,119,181);
+}
+
+.fa-linkedin:hover {
+    color: rgb(0, 82, 126);
+    transform: translateY(1px);
+}
+
+.fa-linkedin:active {
+    color: rgb(1,119,181);
+    transform: translateY(2px);
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 600px) {
+
+    .display-2 {
+        font-size: 4rem;
+        text-shadow: 3px 2px 8px black;
+        position: absolute;
+        right: 15%;
+        bottom: 50%;
+        left: 15%;
+        z-index: 100;
+        color: #fff;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: 'Crimson Text', serif;
+        font-size: 2rem;
+        font-weight: 500;
+        position: absolute;
+        text-shadow: 3px 2px 8px black;
+        padding-top: .5rem;
+        right: 15%;
+        bottom: 36%;
+        left: 15%;
+        z-index: 100;
+        color: #fff;
+        text-align: center;
+    }
+
+    .youtubeVid {
+        position: absolute;
+        right: 15%;
+        bottom: 24%;
+        left: 15%;
+        z-index: 100;
+        text-align: center;
+    }
+}
+
+@media (max-width:743px) and (min-width:601px) {
+    
+    .display-2 {
+        font-family: 'Crimson Text', serif;
+        font-weight: 700;
+        text-shadow: 3px 2px 8px black;
+        position: absolute;
+        right: 15%;
+        bottom: 47%;
+        left: 15%;
+        z-index: 100;
+        color: #fff;
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+        font-family: 'Crimson Text', serif;
+        font-weight: 500;
+        padding-top: .5rem;
+        position: absolute;
+        text-shadow: 3px 2px 8px black;
+        right: 15%;
+        bottom: 26%;
+        left: 15%;
+        z-index: 100;
+        color: #fff;
+        text-align: center;
+    }
+    
+    .youtubeVid {
+        position: absolute;
+        right: 15%;
+        bottom: 11%;
+        left: 15%;
+        z-index: 100;
+        text-align: center;
+    }
+
+}

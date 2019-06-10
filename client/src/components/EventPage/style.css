@@ -1,0 +1,48 @@
+/* .container {
+	margin: 0px auto;
+	width: 500px;
+	height: 375px;
+	border: 10px #333 solid;
+} */
+
+.videoElement {
+	width: 500px;
+	height: 375px;
+	background-color: #666;
+}
+
+.event-name {
+	text-transform: capitalize;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.event-info {
+	text-transform: capitalize;
+	color: rgba(109, 111, 112, 0.966);
+}
+
+.divTitle {
+	font-weight: 600;
+	color: rgba(147, 147, 149, 0.76);
+}
+
+.checkedin-msg {
+	color: rgb(220,53,69); 
+}
+
+.notChecked-status {
+	color: rgb(220,53,69);
+}
+
+.checkedIn-status {
+	color: rgb(40,166,69);
+}
+
+.rt-thead {
+	font-weight: bold;
+}
+
+.rt-tr-group {
+	text-align: center;
+}
