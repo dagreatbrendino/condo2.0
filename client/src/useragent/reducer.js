@@ -18,6 +18,7 @@ const reducer = function clientReducer (state = initialState, action){
                 id: action.userData.id,
             }
         case "USER_UNSET":
+            document.cookie = "id=;"
             return{
                 id: null,
             }

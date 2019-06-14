@@ -47,15 +47,15 @@ class Login extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.email && this.state.password) {
-            API.loginUser({
-                email: this.state.email,
-                password: this.state.password,
-                firstLog: false
-            })
-                .then(res => {
-                    console.log(res)
-                    if (res.data.email) {
-                        this.props.loginRequest({email: res.data.email, password: "password"})
+            // API.loginUser({
+            //     email: this.state.email,
+            //     password: this.state.password,
+            //     firstLog: false
+            // })
+            //     .then(res => {
+            //         console.log(res)
+            //         if (res.data.email) {
+                        this.props.loginRequest({email: this.state.email, password: this.state.password})
                         //updating our user state
                         // this.props.updateUser({
                         //     loggedIn: true,
@@ -64,14 +64,14 @@ class Login extends Component {
                         //     userType: res.data.userType
                         // })
                         // window.location.assign("/dashboard")
-                    }
-                    else{
-                        this.setState({
-                            loginMessage: "Invalid email or password!"
-                        })
-                    }
-                });
-        }
+                    // }
+                    // else{
+                    //     this.setState({
+                    //         loginMessage: "Invalid email or password!"
+                    //     })
+                    // }
+                };
+        
     }
     render() {
         console.log("loggin props ", this.props)

@@ -1,10 +1,16 @@
 import React, { Component } from "react";
+import { connect } from "react-redux"
 import { Link } from "react-scroll";
 import condoLogo from "./logo_transparent.png";
 import modelUNLogo from "../LoginPage/United_Nations_logo.png";
 
 import "./style.css";
 import API from "../../utils/API";
+import {unsetUser} from "../../useragent/actions"
+
+const mapStateToProps = state => ({  
+    login: state.login,
+  })
 
 class Navbar extends Component {
     constructor() {
@@ -13,12 +19,14 @@ class Navbar extends Component {
     }
     logOut = () => {
         API.logOut()
-        window.location.assign("/")
+        this.props.unsetUser()
+        // window.location.assign("/")
     }
     componentDidMount = () => {
     }
 
     render() {
+        console.log("nav props ", this.props)
         return (
             <div>
                 {this.props.loggedIn ?
@@ -132,4 +140,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default connect(mapStateToProps, { unsetUser })(Navbar);

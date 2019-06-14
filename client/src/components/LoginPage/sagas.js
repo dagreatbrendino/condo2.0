@@ -19,7 +19,9 @@ function loginAPI ( email, password ){
         })
 }
 
-function* logout (){}
+function* logout (){
+    yield put(unsetUser())
+}
 
 function* loginFlow ( email, password ){
     let user;
