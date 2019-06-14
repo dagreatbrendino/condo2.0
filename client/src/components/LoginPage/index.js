@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+import { connect } from "react-redux"
+import PropTypes from "prop-types"
 // import { Link } from "react-router-dom";
 import API from "../../utils/API";
 // import { derToJose } from "ecdsa-sig-formatter";
 import NavbarLogin from "../NavbarLogin";
 import LoginJumbotron from "./jumbotron";
+import loginRequest from "./actions"
 
+const mapStateToProps = state => ({  
+    login: state.login,
+  })
+//   const connected = connect(mapStateToProps, { loginRequest })(Login)
 class Login extends Component {
     //the state for the login component keeps track fo the email and password inputs
     constructor() {
@@ -18,6 +25,16 @@ class Login extends Component {
         this.handleInputChange.bind(this)
         this.handleFormSubmit.bind(this)
     }
+    static propTypes = {
+        handleSubmit: PropTypes.func,
+        loginRequest: PropTypes.func,
+        login: PropTypes.shape({
+          requesting: PropTypes.bool,
+          successful: PropTypes.bool,
+          messages: PropTypes.array,
+          errors: PropTypes.array,
+        }),
+      }
     //updating our input fields as the user enters keys
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -30,32 +47,43 @@ class Login extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.email && this.state.password) {
-            API.loginUser({
-                email: this.state.email,
-                password: this.state.password,
-                firstLog: false
-            })
-                .then(res => {
-                    console.log(res)
-                    if (res.data.email) {
+            // API.loginUser({
+            //     email: this.state.email,
+            //     password: this.state.password,
+            //     firstLog: false
+            // })
+            //     .then(res => {
+            //         console.log(res)
+            //         if (res.data.email) {
+                        this.props.loginRequest({email: this.state.email, password: this.state.password})
                         //updating our user state
-                        this.props.updateUser({
-                            loggedIn: true,
-                            email: res.data.email,
-                            name: res.data.name,
-                            userType: res.data.userType
-                        })
-                        window.location.assign("/dashboard")
-                    }
-                    else{
-                        this.setState({
-                            loginMessage: "Invalid email or password!"
-                        })
-                    }
-                });
-        }
+                        // this.props.updateUser({
+                        //     loggedIn: true,
+                        //     email: res.data.email,
+                        //     name: res.data.name,
+                        //     userType: res.data.userType
+                        // })
+                        // window.location.assign("/dashboard")
+                    // }
+                    // else{
+                    //     this.setState({
+                    //         loginMessage: "Invalid email or password!"
+                    //     })
+                    // }
+                };
+        
     }
     render() {
+        console.log("loggin props ", this.props)
+        const {
+           
+            login: {
+              requesting,
+              successful,
+              messages,
+              errors,
+            },
+          } = this.props
         return (
             <div>
                 <NavbarLogin loggedIn={this.props.loggedIn} userType={this.props.userType}/>
@@ -105,4 +133,8 @@ class Login extends Component {
     }
 
 }
-export default Login;
+  
+  // make Redux state piece of `login` and our action `loginRequest`
+  // available in this.props within our component
+// export default Login
+export default connect(mapStateToProps, { loginRequest })(Login)

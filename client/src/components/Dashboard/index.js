@@ -10,11 +10,11 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+                <Navbar />
                 <div className="container-fluid mt-5 pt-5">
                     <div className="row">
                         <div className="col-lg-5 align-self-center">
-                            <UserDashboard {...this.props} />
+                            <UserDashboard />
                         </div>
                         <div className="col-lg-7 align-self-center mt-5">
                             <div className="container-fluid">
