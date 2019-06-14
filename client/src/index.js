@@ -5,5 +5,11 @@ import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+import { applyMiddleware, createStore, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { Provider} from 'react-redux'
+
+
+ReactDOM.render(<Provider><App /></Provider>, document.getElementById("root"));
 registerServiceWorker();

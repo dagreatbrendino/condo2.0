@@ -106,8 +106,8 @@ class App extends Component {
     return (
       <Provider store={store}>
 
-      //if this is the user's first time logging in, they will need to update their password before
-      //goin anywhere else
+      {/* //if this is the user's first time logging in, they will need to update their password before
+      //goin anywhere else */}
       {this.state.firstLog ?
         <Router>
           <Switch>
