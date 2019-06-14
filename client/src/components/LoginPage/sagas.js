@@ -1,6 +1,7 @@
 import {take, fork, cancel, call, put, cancelled } from 'redux-saga/effects'
 import API from "../../utils/API"
 import {browserHistory } from 'react-router'
+import JWT from "jsonwebtoken"
 
 import {
     setUser,
@@ -31,18 +32,20 @@ function* loginFlow ( email, password ){
         yield put (setUser(user))
 
         yield put({type: "LOGIN_SUCCESS"})
-        let d = new Date();
-        d.setTime(d.getTime() + (3*24*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
-        
-        document.cookie = `id=${user.id};${expires}=`
+        // let d = new Date();
+        // d.setTime(d.getTime() + (3*24*60*60*1000));
+        // var expires = "expires="+ d.toUTCString();
+        let token = JWT.sign({data: user}, process.env.JWT_SECRET || "chocolate-chip-cookies", { expiresIn: "72h" })
+        document.cookie = `token=${token}`
+        window.location.assign("/dashboard")
+        // document.cookie = `id=${user.id};${expires}=`
     }
     catch (error){
         yield put({ type: "LOGIN_ERROR", error})
     }
     finally{
         if (yield cancelled()){
-
+            window.location.assign("/login")
         }
     }
     return user

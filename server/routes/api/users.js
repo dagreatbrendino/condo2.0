@@ -130,6 +130,7 @@ router.route("/login")
     .post(passport.authenticate("local",{ failureRedirect: '/login'}), function(req, res){
         console.log("logging in")
         let userInfo = req.user
+        userInfo.password = null
         res.send(userInfo);
     })
 // /api/users/login/:token
