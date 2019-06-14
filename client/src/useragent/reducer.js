@@ -1,10 +1,14 @@
 import API from "../utils/API"
+let decodedCookie = decodeURIComponent(document.cookie);
+let cookieArr = decodedCookie.split(";")
+let cookieId
+
+cookieId = cookieArr.filter(cookie=> cookie.indexOf('id=' == 0))
+cookieId = parseInt(cookieId[0].substring(3, cookieId[0].length))
+console.log(cookieId)
 const initialState = {                
-        id: null,
+        id: cookieId || null,
     }
-
-
-
 
 const reducer = function clientReducer (state = initialState, action){
     switch (action.type){
@@ -18,25 +22,7 @@ const reducer = function clientReducer (state = initialState, action){
                 id: null,
             }
         default:
-        let serverUser;
-        API.getUser()
-        .then(user =>{
-            console.log("user data ", user)
-            if (user.data.id){
-                console.log("returning id of ")
-                serverUser = {
-                    id: user.data.id,
-                }
-            }
-            else{
-                serverUser ={
-                    id: null,         
-                }
-            }
-        })
-        console.log("server user", serverUser)
-        return serverUser
-    
+            return state
     }
 }
 
