@@ -19,7 +19,29 @@ import Profile from "./components/Profile";
 import Chat from "./components/Chat";
 // import isAuthenticated from "../db/config/middleware/isAuthenticated"
 // const UserContext = React.createContext("none");
+//react-redux imports
+import { applyMiddleware, createStore, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { Provider} from 'react-redux'
 
+//importing the root reducer and sagas
+import IndexReducer from "./index-reducer"
+import IndexSagas from "./index-sagas"
+// middleware to connect reducers and actions
+const sagaMiddleware = createSagaMiddleware()
+
+const composeSetup = process.env.NODE_ENV !== 'production' && typeof window === 'object' &&  
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose
+
+//defining our store
+const store = createStore(
+  IndexReducer, 
+  composeSetup(applyMiddleware(sagaMiddleware))
+)
+
+// start the root saga
+sagaMiddleware.run(IndexSagas)
 
 class App extends Component {
   //the users information will be passed to the compenent via it's state
@@ -82,9 +104,11 @@ class App extends Component {
     }
 
     return (
+      <Provider store={store}>
+
       //if this is the user's first time logging in, they will need to update their password before
       //goin anywhere else
-      this.state.firstLog ?
+      {this.state.firstLog ?
         <Router>
           <Switch>
             <Route path="/updatepassword" component={() => <UpdatePasswordPage {...userProps} />} />
@@ -137,6 +161,8 @@ class App extends Component {
             </Switch>
           }
         </Router>
+      }
+      </Provider>
     );
   }
 }
