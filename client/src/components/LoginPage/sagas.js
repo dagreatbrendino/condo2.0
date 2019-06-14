@@ -15,15 +15,14 @@ function loginAPI ( email, password ){
         firstLog: false
     })
     .then(response => {
-        response.send(response.data)
-    })
+        return response.data
+        })
 }
 
 function* logout (){}
 
 function* loginFlow ( email, password ){
     let user;
-    console.log("here")
     try {
         user = yield call(loginAPI, email, password)
         console.log("user", user)
@@ -43,7 +42,6 @@ function* loginFlow ( email, password ){
 }
 
 function* loginWatcher (){
-    console.log("watching pls")
     while(true){
         console.log("watching...")
         const {email, password} = yield take("LOGIN_REQUESTING")
