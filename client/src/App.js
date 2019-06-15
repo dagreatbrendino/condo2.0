@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { connect } from "react-redux"
+
+
 import LandingPage from "./components/LandingPage";
 import ErrorPage from "./components/error-page";
 import UnauthorizedPage from "./components/unauthorized-page";
@@ -17,6 +20,10 @@ import UpdatePasswordPage from "./components/update-password-page";
 import Dashboard from "./components/Dashboard";
 import Profile from "./components/Profile";
 import Chat from "./components/Chat";
+
+const mapStateToProps = state => ({
+  useragent: state.useragent
+})
 // import isAuthenticated from "../db/config/middleware/isAuthenticated"
 // const UserContext = React.createContext("none");
 //react-redux imports
@@ -109,7 +116,7 @@ class App extends Component {
 
       /* //if this is the user's first time logging in, they will need to update their password before
       //goin anywhere else */
-      this.state.firstLog ?
+      this.props.useragent.firstLog ?
         <Router>
           <Switch>
             <Route path="/updatepassword" component={() => <UpdatePasswordPage {...userProps} />} />
@@ -120,7 +127,7 @@ class App extends Component {
         // everywhere else
         <Router>
           {/* if the user is logged in they will have access to all routes depending on their type */}
-          {this.state.loggedIn ? <Switch>
+          {this.props.useragent.id ? <Switch>
             <Route exact path="/" component={() => <LandingPage {...this.state} />} />
             <Route exact path="/dashboard" component={() => <Dashboard {...this.state} />} />
             <Route exact path="/profile" component={() => <Profile {...this.state} />} />
@@ -133,17 +140,17 @@ class App extends Component {
             <Route path="/user/:id" component={(props) => <UserDetail  {...props} {...this.state} />} />
 
             {/* admin and advisor only routes. If the user is not one of these, they will be given an unauthorized page */}
-            {this.state.userType === "admin" || this.state.userType === "advisor" ?
+            {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" ?
               <Route exact path="/createevent" component={() => <CreateEvent {...this.state} />} />
               :
               <Route exact path="/createevent" component={() => <UnauthorizedPage {...this.state} />} />
             }
-            {this.state.userType === "admin" || this.state.userType === "advisor" ?
+            {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" ?
               <Route exact path="/createuser" component={() => <CreateUser {...this.state} />} />
               :
               <Route exact path="/createuser" component={() => <UnauthorizedPage {...this.state} />} />}
 
-            {this.state.userType === "admin" || this.state.userType === "advisor" ?
+            {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" ?
               <Route exact path="/mydelegates" component={() => <MyDelegates {...this.state} />} />
               : 
               <Route exact path="/mydelegates" component={() => <UnauthorizedPage {...this.state} />} />}
@@ -168,4 +175,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
