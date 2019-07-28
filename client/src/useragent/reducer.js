@@ -14,16 +14,22 @@ let userType
 let userSchoolId
 let userCommitteeId
 let userCountry
+let userFirstLog
 //if there is a token cookie, extract it, otherwise we will be left with an empty array
 cookieToken = cookieArr.filter(cookie=> cookie.trim().indexOf('token=') == 0)
-console.log(cookieToken)
+console.log("here COOK ", cookieToken)
 //get the value of that token cookie
-cookieToken = cookieToken[0].trim().substring(6, cookieToken[0].length)
+if( cookieToken[0]){
+    cookieToken = cookieToken[0].trim().substring(6, cookieToken[0].length)
+}
+
+
 //as long as it is not an empty string or array, it will be decoded by JWT
-if(cookieToken){
+if(cookieToken[0]){
     let decodedToken = JWT.verify(cookieToken, process.env.JWT_SECRET || "chocolate-chip-cookies")
     let userInfo = decodedToken.data
     //assign the relevant information from the token
+    console.log("user info from token ", userInfo)
     userId = userInfo.id
     userName = userInfo.name
     userEmail = userInfo.email
@@ -31,6 +37,7 @@ if(cookieToken){
     userSchoolId = userInfo.schoolId
     userCommitteeId = userInfo.committeeId
     userCountry = userInfo.country
+    userFirstLog = userInfo.firstLog
 }
 
 // console.log(decoded)
@@ -41,7 +48,8 @@ const initialState = {
         type: userType || null,
         schoolId: userSchoolId || null,
         committeeId: userCommitteeId || null,
-        country: userCountry || null
+        country: userCountry || null,
+        firstLog: userFirstLog || null
     }
 
 const reducer = function clientReducer (state = initialState, action){
@@ -55,7 +63,8 @@ const reducer = function clientReducer (state = initialState, action){
                 type: action.userData.userType,
                 schoolId: action.userData.schoolId,
                 committeeId: action.userData.committeeId,
-                country: action.userData.country
+                country: action.userData.country,
+                firstLog: action.userData.firstLog,
             }
         case "USER_UNSET":
             document.cookie = "token=;"
@@ -66,7 +75,8 @@ const reducer = function clientReducer (state = initialState, action){
                 type: null,
                 schoolId: null,
                 committeeId: null,
-                country: null
+                country: null,
+                firstLog: null,
             }
         default:
             return state
