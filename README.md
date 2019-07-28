@@ -23,13 +23,13 @@ Before getting started, you will need to install:
 1. Clone this GitHub Repo
 2. From the root directory, run the command: 
 ```
-yarn install
+npm install
 ```
-* <b><u>Note</u></b>: Our included scripts within  will cd into the client folder and do another ```yarn install``` for you!
+* <b><u>Note</u></b>: Our included scripts within  will cd into the client folder and do another ```npm install``` for you!
 
-3. Once the ```yarn install``` is complete, run this command to get the project up and running on your local machine: 
+3. Once the ```npm install``` is complete, run this command to get the project up and running on your local machine: 
 ```
-yarn start
+npm start
 ```
 
 ## YouTube Demo
