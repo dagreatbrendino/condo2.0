@@ -28,7 +28,6 @@ function* loginFlow ( email, password ){
     let user;
     try {
         user = yield call(loginAPI, email, password)
-        console.log("user", user)
         yield put (setUser(user))
 
         yield put({type: "LOGIN_SUCCESS"})

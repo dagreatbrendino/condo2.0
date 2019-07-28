@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux"
 import API from "../../utils/API";
 import Select from "./select-dropdowns";
 import Navbar from "../Navbar";
 import AllSchedules from "./all-schedules";
 import FormErrors from "../form-errors";
 import "./style.css";
+
+const mapStateToProps = state=> ({
+  useragent: state.useragent
+})
 
 class CreateEvent extends Component {
   //the signup state keeps track of all of the input fields in the signup form
@@ -150,8 +155,8 @@ class CreateEvent extends Component {
   render() {
     return (
       <div>
-        <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType} />
-        {this.props.userType === "admin" || this.props.userType === "advisor" ?
+        <Navbar/>
+        {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" ?
           <div className="container-fluid mt-5 mb-3 pt-5">
             <div className="row justify-content-around">
               <div className="col mt-4 border-right border-secondary">
@@ -280,4 +285,4 @@ class CreateEvent extends Component {
   }
 }
 
-export default CreateEvent;
+export default connect(mapStateToProps)(CreateEvent);

@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux"
 import API from "../../utils/API";
 import Select from "./select-dropdowns";
 import UserSearch from "./UserSearch"
 import Navbar from "../Navbar";
 import FormErrors from "../form-errors";
+
+const mapStateToProps = state=> ({
+  useragent: state.useragent
+})
 
 class CreateUser extends Component {
   //the signup state keeps track of all of the input fields in the signup form
@@ -245,10 +250,10 @@ class CreateUser extends Component {
   render() {
     return (
       <div>
-        <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+        <Navbar/>
 
         {/* For logged in admin/advisors, input fields for FULL NAME, EMAIL, & COUNTRY are available */}
-        {this.props.userType === "admin" || this.props.userType === "advisor" ?
+        {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" ?
           <div className="container-fluid mt-5 pt-5 createUserContainer">
             <div className="row justify-content-around">
               <div className="col border-right border-secondary">
@@ -467,4 +472,4 @@ class CreateUser extends Component {
     );
   }
 }
-export default CreateUser;
+export default connect(mapStateToProps)(CreateUser);
