@@ -17,7 +17,7 @@ let userCountry
 let userFirstLog
 //if there is a token cookie, extract it, otherwise we will be left with an empty array
 cookieToken = cookieArr.filter(cookie=> cookie.trim().indexOf('token=') == 0)
-console.log(cookieToken)
+console.log("here COOK ", cookieToken)
 //get the value of that token cookie
 if( cookieToken[0]){
     cookieToken = cookieToken[0].trim().substring(6, cookieToken[0].length)
