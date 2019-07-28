@@ -22,7 +22,7 @@ class NavbarLogin extends Component {
             <div>
                     <nav className="navbar navbar-expand-md navbar-light fixed-top border-bottom p-1 pr-3">
                         <a className="navbar-brand py-0" href="/">
-                            <img src={condoLogo} width="70" height="70" className="d-inline-block align-top" alt="Company Logo" />
+                            <img src={condoLogo} width="70" height="70" className="d-inline-block align-top" alt="Con.DO Company Logo" />
                         </a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon navbar-dark"></span>
