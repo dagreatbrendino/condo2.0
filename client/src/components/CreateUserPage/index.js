@@ -304,11 +304,16 @@ class CreateUser extends Component {
                   {this.props.userType === "admin" ?
                     <div class="form-group row input-group">
                       <label htmlFor="userTypeSelect" className="col-lg-2 col-sm-4 col-form-label px-0 ml-3">User Type</label>
-                      <select className="col-lg-10 col-sm-8 form-control border-dark rounded-0 px-0 ml-3" value={this.state.userType} onChange={this.handleInputChange} name="userType">
-                        <option value="admin">Admin</option>
-                        <option value="advisor">Advisor</option>
-                        <option value="staff">Staff</option>
-                        <option value="delegate">Delegate</option>
+                      <select 
+                        className="col-lg-10 col-sm-8 form-control border-dark rounded-0 px-0 ml-3"
+                        value={this.state.userType}
+                        onChange={this.handleInputChange}
+                        name="userType"
+                        id="userTypeSelect">
+                          <option value="admin">Admin</option>
+                          <option value="advisor">Advisor</option>
+                          <option value="staff">Staff</option>
+                          <option value="delegate">Delegate</option>
                       </select>
                     </div>
                     :
