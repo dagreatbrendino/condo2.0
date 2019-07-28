@@ -30,9 +30,6 @@ class NavbarLogin extends Component {
                         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                             <ul className="navbar-nav ml-2">
                                 <li className="nav-item">
-                                    <a href="/" className="nav-link mr-3">Home</a>
-                                </li>
-                                <li className="nav-item">
                                     <a className="nav-link btn btn-danger px-4 py-2 text-white" href="/login" role="button">Log In</a>
                                 </li>
                             </ul>
