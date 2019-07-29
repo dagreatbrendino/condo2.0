@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import API from "../../../utils/API";
 import ReactTable from "react-table";
 import matchSorter from "match-sorter";
+import { connect } from "react-redux"
 
+const mapStateToProps = state => ({
+    useragent: state.useragent
+})
 
 class UserSearch extends Component {
     //the signup state keeps track of all of the input fields in the signup form
@@ -34,13 +38,13 @@ class UserSearch extends Component {
         API.getAllUsers()
             .then(res => {
                 let returnedUsers = res.data
-                if (this.props.userType === "advisor") {
-                    returnedUsers = returnedUsers.filter(user => user.schoolId === this.props.schoolId)
+                if (this.props.useragent.type === "advisor") {
+                    returnedUsers = returnedUsers.filter(user => user.schoolId === this.props.useragent.schoolId)
                     returnedUsers = returnedUsers.filter(user => user.userType !== "admin")
                     returnedUsers = returnedUsers.filter(user => user.userType !== "advisor")
                     returnedUsers = returnedUsers.filter(user => user.userType !== "staff")
                 }
-                returnedUsers = returnedUsers.filter(user => user.id !== this.props.id)
+                returnedUsers = returnedUsers.filter(user => user.id !== this.props.useragent.id)
                 this.setState({
                     users: returnedUsers
                 });
@@ -53,13 +57,13 @@ class UserSearch extends Component {
                 API.getAllUsers()
                     .then(res => {
                         let returnedUsers = res.data;
-                        if (this.props.userType === "advisor") {
-                            returnedUsers = returnedUsers.filter(user => user.schoolId === this.props.schoolId)
+                        if (this.props.useragent.type === "advisor") {
+                            returnedUsers = returnedUsers.filter(user => user.schoolId === this.props.useragent.schoolId)
                             returnedUsers = returnedUsers.filter(user => user.userType !== "admin")
                             returnedUsers = returnedUsers.filter(user => user.userType !== "advisor")
                             returnedUsers = returnedUsers.filter(user => user.userType !== "staff")
                         }
-                        returnedUsers = returnedUsers.filter(user => user.id !== this.props.id);
+                        returnedUsers = returnedUsers.filter(user => user.id !== this.props.useragent.id);
 
                         this.setState({
                             users: returnedUsers
@@ -155,4 +159,4 @@ class UserSearch extends Component {
     }
 }
 
-export default UserSearch;
+export default connect(mapStateToProps)(UserSearch);

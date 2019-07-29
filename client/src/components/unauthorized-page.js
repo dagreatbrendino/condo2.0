@@ -26,7 +26,7 @@ class UnauthorizedPage extends Component {
     render() {
         return (
             <div>
-            <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+            <Navbar/>
             <div className="container mt-5 pt-5">
                 <div className="row">
                     <div className="col text-center">

@@ -118,7 +118,7 @@ class CreateUser extends Component {
 
     if (this.state.email && this.state.name && this.state.userType) {
       //if an admin is creating the account, they will submit a value for each attribute
-      if (this.props.userType === "admin") {
+      if (this.props.useragent.type === "admin") {
         API.createUser({
           email: this.state.email,
           name: this.state.name,
@@ -301,7 +301,7 @@ class CreateUser extends Component {
 
                   {/* NESTED TERNARY OPERATOR FOR ONLY ADMIN TO SELECT USER TYPE */}
                   {/* if the user is an admin, they can choose the user type of the user they are creating, otherwise they will create a delegate */}
-                  {this.props.userType === "admin" ?
+                  {this.props.useragent.type === "admin" ?
                     <div class="form-group row input-group">
                       <label htmlFor="userTypeSelect" className="col-lg-2 col-sm-4 col-form-label px-0 ml-3">User Type</label>
                       <select 
@@ -323,7 +323,7 @@ class CreateUser extends Component {
 
                   {/* NESTED TERNARY OPERATOR FOR ADMIN TO BE ABLE TO ADD COMMITTEE/SCHOOL IF NOT ALREADY IN DB */}
                   {/* ADVISOR WILL ONLY BE ABLE TO ADD A COMMITTEE FOR A DELEGATE IF NOT ALREADY IN DB */}
-                  {this.props.userType === "admin" ?
+                  {this.props.useragent.type === "admin" ?
                     <div>
                       <form>
                         <div className="form-row align-items-center mb-3">
@@ -368,7 +368,7 @@ class CreateUser extends Component {
                           <div className="col">
                             {/* NESTED TERNARY OPERATOR */}
                             {/* if the user is an admin here's where they would choose the school that they just added OR select from db already for the user they are creating */}
-                            {this.props.userType === "admin" ?
+                            {this.props.useragent.type === "admin" ?
                               <div>
                                 <label htmlFor="schoolSelect" className="col-lg-2 col-sm-4 col-form-label px-0">School</label>
                                 <Select
@@ -466,7 +466,7 @@ class CreateUser extends Component {
               </div>
               <div className="col mb-5">
                 <h1 className="display-4 mb-4 pb-3">Search Users</h1>
-                <UserSearch key={this.state.updateMe} userType={this.props.userType} schoolId={this.props.schoolId} id={this.props.id} />
+                <UserSearch key={this.state.updateMe} />
               </div>
             </div>
           </div>

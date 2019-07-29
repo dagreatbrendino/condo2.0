@@ -47,29 +47,7 @@ class Login extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.email && this.state.password) {
-            // API.loginUser({
-            //     email: this.state.email,
-            //     password: this.state.password,
-            //     firstLog: false
-            // })
-            //     .then(res => {
-            //         console.log(res)
-            //         if (res.data.email) {
                         this.props.loginRequest({email: this.state.email, password: this.state.password})
-                        //updating our user state
-                        // this.props.updateUser({
-                        //     loggedIn: true,
-                        //     email: res.data.email,
-                        //     name: res.data.name,
-                        //     userType: res.data.userType
-                        // })
-                        // window.location.assign("/dashboard")
-                    // }
-                    // else{
-                    //     this.setState({
-                    //         loginMessage: "Invalid email or password!"
-                    //     })
-                    // }
                 };
         
     }
@@ -86,12 +64,13 @@ class Login extends Component {
           } = this.props
         return (
             <div>
-                <NavbarLogin loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+                <NavbarLogin/>
                 <div className="container-fluid mt-5 pt-3 mb-5">
                     <LoginJumbotron />
                     <div className="row justify-content-center">
                         <div className="col-lg-6">
-                            <h6 className="text-danger">{this.state.loginMessage}</h6>
+                            {this.props.login.errors[0] ? <h6 className="text-danger">{this.props.login.errors[0].body}</h6>:<></> }
+                           
                             <form>
                                 <div className="form-group input-group">
                                     <div className="input-group-prepend">

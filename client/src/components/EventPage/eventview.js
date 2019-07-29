@@ -10,6 +10,11 @@ import CreateMeasure from "./createmeasure";
 import ViewMeasures from "./viewmeasures";
 import UnauthorizedPage from "../unauthorized-page";
 import "./style.css";
+import { connect } from "react-redux"
+
+const mapStateToProps = state => ({
+    useragent: state.useragent
+})
 
 class Event extends Component {
     //the state for the login component keeps track fo the email and password inputs
@@ -53,7 +58,7 @@ class Event extends Component {
                 //that matches the currently logged in user. Once we find that record, we will use it's checkedIn property to 
                 //change our checkedIn state (the checkedIn state of the logged in user agent)
                 res.data.attendance.map(attendanceRecord => {
-                    if (attendanceRecord.id === this.props.userId) {
+                    if (attendanceRecord.id === this.props.useragent.type) {
                         this.setState({
                             checkedIn: attendanceRecord.checkedIn
                         });
@@ -138,7 +143,7 @@ class Event extends Component {
         //before we return the record, we will check to see if the record matches the id of the user who is 
         //requesting to check in. Once we find that record we will set its checkedIn property to true
         let updatedAttendance = currentAttendance.map((attendanceRecord) => {
-            let id = this.props.userId;
+            let id = this.props.useragent.id;
             if (attendanceRecord.id === id) {
                 attendanceRecord.checkedIn = true;
                 this.setState({
@@ -166,11 +171,11 @@ class Event extends Component {
                     //for a measure get it's current vote tally
                     let votes = measure.voteTally;
                     //check to see if the user who just checked in is already in the voteTally array
-                    let filtered = votes.filter(vote => vote.id === this.props.userId);
+                    let filtered = votes.filter(vote => vote.id === this.props.useragent.id);
                     //if they are not in the vote tally, push them 
                     if (filtered.length === 0) {
                         //get the delegatesInfo from the attendance array
-                        let delegateInfo = this.state.attendance.filter(delegate => delegate.id === this.props.userId);
+                        let delegateInfo = this.state.attendance.filter(delegate => delegate.id === this.props.useragent.id);
                         //if the user who attempted to check in is in the attendance array, push their info to the voteTally array
                         if (delegateInfo) {
                             votes.push({
@@ -249,9 +254,9 @@ class Event extends Component {
         return (
             <div>
                 {/* if the user is and admin, advisor, or has a committeeId that matches the event, then they can access the page */}
-                {this.props.userType === "admin" || this.props.userType === "advisor" || this.props.committeeId === this.state.committeeId ?
+                {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.committeeId === this.state.committeeId ?
                     <div>
-                        <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+                        <Navbar/>
                         <div className="container-fluid mt-5 pt-4">
                             <div className="row justify-content-center">
                                 <div className="col-lg-3 mt-5">
@@ -268,7 +273,7 @@ class Event extends Component {
                                             }
 
                                             {/*if the user is not a delegate, then they can check in other users  */}
-                                            {this.props.userType === "admin" || this.props.userType === "advisor" || this.props.userType === "staff" ?
+                                            {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                                 <div>
                                                     <Webcam checkIn={this.checkIn} />
                                                     <div className="checkedin-msg h6">{this.state.recentlyCheckedIn}</div>
@@ -286,7 +291,7 @@ class Event extends Component {
                                 <div className="col mt-5">
                                     <h3 className="divTitle">Measures</h3>
                                     {/* if the user is not a delegate they can create measures */}
-                                    {this.props.userType === "admin" || this.props.userType === "advisor" || this.props.userType === "staff" ?
+                                    {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                         <CreateMeasure attendees={this.state.attendance} eventId={this.props.match.params.id} />
                                         :
                                         <div></div>
@@ -297,7 +302,7 @@ class Event extends Component {
 
                             <div className="row justify-content-end">
                                 {/* if the user is not a delegate they can see attendance for event */}
-                                {this.props.userType === "admin" || this.props.userType === "advisor" || this.props.userType === "staff" ?
+                                {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                     <div className="col-lg-9 mt-5">
                                         <h3 className="divTitle">Attendance</h3>
                                         {this.state.allSchools.length !== 0 && this.state.allCommittees.length !== 0 && this.state.attendance.length !== 0 ?
@@ -325,4 +330,4 @@ class Event extends Component {
     }
 }
 
-export default Event;
+export default connect(mapStateToProps)(Event);

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Navbar from "../Navbar";
 import API from "../../utils/API";
 import io from "socket.io-client";
+import { connect } from "react-redux"
 import ScrollToBottom from "react-scroll-to-bottom";
 import "./style.css";
 import { css } from "glamor";
@@ -15,11 +16,16 @@ const ROOT_CSS = css({
 
 const uuidv4 = require("uuid/v4");
 
+const mapStateToProps = state => ({
+    useragent: state.useragent
+})
+
+
 class Chat extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: this.props.name,
+            name: this.props.useragent.name,
             message: " ",
             messages: []
         }
@@ -45,7 +51,7 @@ class Chat extends Component {
 
         this.sendMessage = () => {
             this.socket.emit('SEND_MESSAGE', {
-                name: this.props.name,
+                name: this.props.useragent.name,
                 message: this.state.message
             });
             this.setState({ message: '' });
@@ -84,7 +90,7 @@ class Chat extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         API.postMessage({
-            name: this.props.name,
+            name: this.props.useragent.name,
             message: this.state.message
         })
         this.setState({
@@ -104,7 +110,7 @@ class Chat extends Component {
     render() {
         return (
             <div>
-                <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+                <Navbar/>
                 <div className="container-fluid mt-5 pt-5 vw-100 mx-auto">
                     <div className="row justify-content-center">
                         <div className="col">
@@ -138,5 +144,5 @@ class Chat extends Component {
     }
 };
 
-export default Chat;
+export default connect(mapStateToProps)(Chat);
 

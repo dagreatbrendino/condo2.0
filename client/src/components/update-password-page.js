@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 // import { derToJose } from "ecdsa-sig-formatter";
 import UpdatePassword from "./Profile/update-password";
 
+
 class UpdatePasswordPage extends Component {
     //the state for the login component keeps track fo the email and password inputs
     constructor(props) {
@@ -16,7 +17,7 @@ class UpdatePasswordPage extends Component {
     render(){
         return(
         <div>
-            <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+            <Navbar />
               <div className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-lg-6 text-center mt-5">
