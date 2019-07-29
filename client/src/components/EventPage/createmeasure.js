@@ -70,6 +70,7 @@ class CreateMeasure extends Component {
     return (
       <form className="form-inline mb-3">
         <div className="form-group row input-group">
+          <label htmlFor="nameInput" className="d-none"></label>
           <input
             value={this.state.name}
             onChange={this.handleInputChange}
@@ -79,10 +80,16 @@ class CreateMeasure extends Component {
             id="nameInput"
           />
         </div>
-        <select className="col form-control border-dark rounded-0 px-0 ml-3" value={this.state.measureType} onChange={this.handleInputChange} name="measureType">
-          <option selected>Choose measure type...</option>
-          <option value="resolution">resolution</option>
-          <option value="procedural">procedural</option>
+        <label htmlFor="measureType" className="d-none"></label>
+        <select 
+          className="col form-control border-dark rounded-0 px-0 ml-3"
+          value={this.state.measureType}
+          onChange={this.handleInputChange}
+          name="measureType"
+          id="measureType">
+            <option selected>Choose measure type...</option>
+            <option value="resolution">resolution</option>
+            <option value="procedural">procedural</option>
         </select>
         <button
           className="btn btn-outline-dark px-3 ml-3"
