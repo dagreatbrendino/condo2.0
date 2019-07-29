@@ -11,7 +11,15 @@ export class DemoVideo extends Component {
                 </div>
                 <div className="row text-center">
                     <div className="col">
-                        <iframe width="100%" height="500" src="https://www.youtube.com/embed/VMj3Jn1hgCU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen="allowfullscreen"></iframe>
+                        <iframe
+                            title="YouTube Demo Video of Con.DO"
+                            width="100%"
+                            height="500"
+                            src="https://www.youtube.com/embed/VMj3Jn1hgCU"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                            allowfullscreen="allowfullscreen">
+                        </iframe>
                     </div>
                 </div>
             </div>
