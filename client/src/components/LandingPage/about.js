@@ -12,9 +12,9 @@ class AboutPage extends Component {
                 <div className="row">
                     <div className="col-lg-3 mt-5 align-self-center">
                         <h1 className="display-3 d-none d-sm-none d-md-none d-lg-block d-xl-block pl-5">Meet</h1>
-                        <h1 className="display-3 d-none d-sm-none d-md-none d-lg-block d-xl-block pl-5">The</h1>
+                        <h1 className="display-3 d-none d-sm-none d-md-none d-lg-block d-xl-block pl-5">Our</h1>
                         <h1 className="display-3 d-none d-sm-none d-md-none d-lg-block d-xl-block pl-5">Team</h1>
-                        <h1 className="display-4 d-xl-none d-lg-none text-center">Meet the Team</h1>
+                        <h1 className="display-4 d-xl-none d-lg-none text-center">Meet Our Team</h1>
                     </div>
                     <div className="col">
                         <div className="container">

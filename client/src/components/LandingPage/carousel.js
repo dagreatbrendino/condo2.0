@@ -24,7 +24,7 @@ class Carousel extends Component {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img src={image1} className="d-block vw-100 vh-100 carousel-img" alt="..." />
+                                    <img src={image1} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
                                         <h1 className="display-2">con.DO</h1>
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
@@ -44,7 +44,7 @@ class Carousel extends Component {
                                     </div>
                                 </div>
                                 <div className="carousel-item">
-                                    <img src={image2} className="d-block vw-100 vh-100 carousel-img" alt="..." />
+                                    <img src={image2} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
                                         <h1 className="display-2">con.DO</h1>
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
@@ -64,7 +64,7 @@ class Carousel extends Component {
                                     </div>
                                 </div>
                                 <div className="carousel-item">
-                                    <img src={image3} className="d-block vw-100 vh-100 carousel-img" alt="..." />
+                                    <img src={image3} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
                                         <h1 className="display-2">con.DO</h1>
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
@@ -84,7 +84,7 @@ class Carousel extends Component {
                                     </div>
                                 </div>
                                 <div className="carousel-item">
-                                    <img src={image4} className="d-block vw-100 vh-100 carousel-img" alt="..." />
+                                    <img src={image4} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
                                         <h1 className="display-2">con.DO</h1>
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
@@ -104,7 +104,7 @@ class Carousel extends Component {
                                     </div>
                                 </div>
                                 <div className="carousel-item">
-                                    <img src={image5} className="d-block vw-100 vh-100 carousel-img" alt="..." />
+                                    <img src={image5} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
                                         <h1 className="display-2">con.DO</h1>
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>

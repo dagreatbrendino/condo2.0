@@ -76,12 +76,14 @@ class Login extends Component {
                                     <div className="input-group-prepend">
                                         <span className="pt-2 border-bottom border-dark rounded-0"><i className="fas fa-envelope fa-lg"></i></span>
                                     </div>
+                                    <label htmlFor="loginEmailInput" className="d-none"></label>
                                     <input className="form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-2"
                                         aria-describedby="emailBlock"
                                         value={this.state.email}
                                         onChange={this.handleInputChange}
                                         type="text"
                                         name="email"
+                                        id="loginEmailInput"
                                         placeholder="Email (required)"
                                     />
                                 </div>
@@ -89,11 +91,13 @@ class Login extends Component {
                                     <div className="input-group-prepend">
                                         <span className="pt-2 border-bottom border-dark rounded-0"><i className="fas fa-lock fa-lg"></i></span>
                                     </div>
+                                    <label htmlFor="loginPasswordInput" className="d-none"></label>
                                     <input className="form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-2"
                                         value={this.state.password}
                                         onChange={this.handleInputChange}
                                         type="password"
                                         name="password"
+                                        id="loginPasswordInput"
                                         placeholder="Password (required)"
                                     />
                                 </div>

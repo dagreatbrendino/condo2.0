@@ -46,6 +46,7 @@ class Select extends Component {
                 className="col-lg-10 col-sm-8 form-control border-top-2 border-left-2 border-right-2 border-dark rounded-0 px-0"
                 value={this.state.value}
                 name={this.props.name}
+                id="committeeSelect"
                 onChange={this.handleInputChange}>
                 {this.state.options.map(option => 
                     (<option value={option.id}>{option.name}</option>))}

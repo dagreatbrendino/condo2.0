@@ -124,6 +124,7 @@ class Chat extends Component {
                                 </div>
                             </ScrollToBottom>
                             <form className={ROOT_CSS}>
+                                <label htmlFor="message" className="d-none"></label>
                                 <textarea wrap="hard" name="message" id="message" className="form-control" placeholder="Your message here" value={this.state.message} onChange={this.handleInputChange}
                                 // onKeyDown={this.onEnterPress} 
                                 />
@@ -134,10 +135,10 @@ class Chat extends Component {
                                 >
                                     Send Message
                             </button>
-                            </form >
+                            </form>
                         </div>
                     </div>
-                </div >
+                </div>
             </div>
         )
     }

@@ -42,21 +42,25 @@ class UpdatePassword extends Component {
                     {this.state.password === this.state.passwordConfirm ? <div></div> : <div>Passwords Must Match!</div>}
                     <form>
                         <div className="form-group input-group">
+                            <label htmlFor="passwordUpdate" class="d-none"></label>
                             <input className="form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-1"
                                 aria-describedby="emailBlock"
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                                 type="password"
                                 name="password"
+                                id="passwordUpdate"
                                 placeholder="New Password"
                             />
                         </div>
                         <div className="form-group input-group">
+                            <label htmlFor="passwordUpdateConfirm" class="d-none"></label>
                             <input className="form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-1"
                                 value={this.state.passwordConfirm}
                                 onChange={this.handleInputChange}
                                 type="password"
                                 name="passwordConfirm"
+                                id="passwordUpdateConfirm"
                                 placeholder="Confirm New Password"
                             />
                         </div>
