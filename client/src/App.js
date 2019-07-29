@@ -40,14 +40,14 @@ class App extends Component {
       schoolId: null,
       committeeId: null
     }
-    this.getUser = this.getUser.bind(this);
+    // this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUser = this.updateUser.bind(this);
   }
   //when our component succesfully renders, we will try to get the information 
   //for the currently logged in user
   componentDidMount = () => {
-    this.getUser();
+    // this.getUser();
   };
 
   //function to be called when the user first logs in
@@ -57,21 +57,21 @@ class App extends Component {
 
   //getting the current user based on the session.user
   getUser = () => {
-    API.getUser()
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({
-            id: res.data.id,
-            email: res.data.email,
-            name: res.data.name,
-            userType: res.data.userType,
-            loggedIn: true,
-            firstLog: res.data.firstLog,
-            schoolId: res.data.schoolId,
-            committeeId: res.data.committeeId
-          });
-        }
-      });
+    // API.getUser()
+    //   .then(res => {
+    //     if (res.status === 200) {
+    //       this.setState({
+    //         id: res.data.id,
+    //         email: res.data.email,
+    //         name: res.data.name,
+    //         userType: res.data.userType,
+    //         loggedIn: true,
+    //         firstLog: res.data.firstLog,
+    //         schoolId: res.data.schoolId,
+    //         committeeId: res.data.committeeId
+    //       });
+    //     }
+    //   });
   }
 
   render() {
@@ -94,7 +94,7 @@ class App extends Component {
       this.props.useragent.firstLog ?
         <Router>
           <Switch>
-            <Route path="/updatepassword" component={() => <UpdatePasswordPage {...userProps} />} />
+            <Route path="/updatepassword" component={() => <UpdatePasswordPage {...this.state} />} />
             <Route component={() => (<Redirect to="/updatepassword" />)} />
           </Switch>
 
@@ -139,7 +139,7 @@ class App extends Component {
               <Route exact path="/" component={() => <LandingPage {...this.state} />} />
               {/* Auth related routes */}
               <Route path="/verify/:token" component={(props) => <VerifyUser  {...props} />} />
-              <Route exact path="/login" component={() => <Login updateUser={this.updateUser} {...this.state}/>} />
+              <Route exact path="/login" component={() => <Login {...this.state}/>} />
               <Route component={() => <UnauthorizedPage {...this.state} />} />
             </Switch>
           }

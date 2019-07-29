@@ -5,7 +5,11 @@ import ReactTable from "react-table";
 import matchSorter from "match-sorter";
 import io from "socket.io-client";
 import "./style.css";
-// const uuidv4 = require("uuid/v4");
+import { connect } from "react-redux"
+
+const mapStateToProps = state => ({
+    useragent: state.useragent
+})
 
 // let pullMeasureInterval;
 
@@ -136,7 +140,7 @@ class MeasureDetail extends Component {
 
                 //find the vote record that matches the user and update it's value to true
                 let updatedVote = currentVote.map(delegateVote => {
-                    if (delegateVote.id === this.props.id) {
+                    if (delegateVote.id === this.props.useragent.id) {
                         delegateVote.vote = true;
                     }
                     return delegateVote;
@@ -170,7 +174,7 @@ class MeasureDetail extends Component {
 
                 //update the voter record for the current user
                 let updatedVote = currentVote.map(delegateVote => {
-                    if (delegateVote.id === this.props.id) {
+                    if (delegateVote.id === this.props.useragent.id) {
                         delegateVote.vote = false;
                     }
                     return delegateVote;
@@ -232,14 +236,14 @@ class MeasureDetail extends Component {
 
         return (
             <div>
-                <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+                <Navbar/>
                 <div className="container-fluid mt-5 pt-4">
                     <div className="row justify-content-center">
                         <div className="col-lg-10 mt-5">
                             <h3 className="divTitle">Measure:</h3>
                             <h1 className="display-4"><b>{this.state.name} for {this.state.committeeName} during {this.state.eventName}</b></h1>
                             {/* if the user is admin or staff, they can open up/ close voting */}
-                            {this.props.userType === "admin" || this.props.userType === "staff" ?
+                            {this.props.useragent.type === "admin" || this.props.useragent.type === "staff" ?
                                 this.state.open ?
                                     <div>
                                         <button className="btn btn-outline-dark mb-3" onClick={this.closeVoting}>Close Voting</button>
@@ -286,4 +290,4 @@ class MeasureDetail extends Component {
     }
 
 }
-export default MeasureDetail;
+export default connect(mapStateToProps)(MeasureDetail);
