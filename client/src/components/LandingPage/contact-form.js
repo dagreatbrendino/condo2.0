@@ -51,8 +51,10 @@ class ContactForm extends Component {
                         <form>
                             <div className="form-row">
                                 <div className="form-group col">
+                                    <label htmlFor="fullNameInput" className="d-none"></label>
                                     <input className="form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-1 pb-0"
                                         name="name"
+                                        id="fullNameInput"
                                         value={this.state.name}
                                         onChange={this.handleInputChange}
                                         type="text"
@@ -60,8 +62,10 @@ class ContactForm extends Component {
                                     />
                                 </div>
                                 <div className="form-group col">
+                                    <label htmlFor="emailInput" className="d-none"></label>
                                     <input className="form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-1 pb-0"
                                         name="email"
+                                        id="emailInput"
                                         value={this.state.email}
                                         onChange={this.handleInputChange}
                                         type="text"
@@ -70,8 +74,10 @@ class ContactForm extends Component {
                                 </div>
                             </div>
                             <div className="form-group">
+                                <label htmlFor="subjectInput" className="d-none"></label>
                                 <input className="form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-1 pb-0"
                                     name="subject"
+                                    id="subjectInput"
                                     value={this.state.subject}
                                     onChange={this.handleInputChange}
                                     type="text"
@@ -79,8 +85,10 @@ class ContactForm extends Component {
                                 />
                             </div>
                             <div className="form-group">
+                                <label htmlFor="messageArea" className="d-none"></label>
                                 <textarea className="form-control border-dark pl-2"
                                     name="message"
+                                    id="messageArea"
                                     value={this.state.message}
                                     onChange={this.handleInputChange}
                                     type="text"
