@@ -1,7 +1,3 @@
-.user-name {
-    text-transform: capitalize;
-}
-
-.user-type {
+h1, p, .event-table {
     text-transform: capitalize;
 }
