@@ -44,12 +44,6 @@ class Navbar extends Component {
                                 <li className="nav-item mr-3">
                                     <a className="nav-link" href="/dashboard">Dashboard</a>
                                 </li>
-                                <li className="nav-item mr-3">
-                                    <a className="nav-link" href="/profile">Profile</a>
-                                </li>
-                                <li className="nav-item mr-3">
-                                    <a className="nav-link" href="/chat">Chat</a>
-                                </li>
                                 {/* Only render My Delegates Page for advisors*/}
                                 {this.props.useragent.type === "advisor" || this.props.useragent.type ==="admin" ?
                                     <li className="nav-item mr-3">
@@ -59,6 +53,12 @@ class Navbar extends Component {
                                     <li></li>
                                 }
                                 {/* END Only render My Delegates Page for advisors*/}
+                                <li className="nav-item mr-3">
+                                    <a className="nav-link" href="/chat">Chat</a>
+                                </li>
+                                <li className="nav-item mr-3">
+                                    <a className="nav-link" href="/profile">Account</a>
+                                </li>
                                 <li className="nav-item">
                                     <button className="nav-link btn btn-danger px-4 py-2 text-white" onClick={this.logOut}>Log Out</button>
                                 </li>
@@ -111,7 +111,7 @@ class Navbar extends Component {
                                         offset={-70}
                                         duration={500}
                                     >
-                                        About Us
+                                        Our Team
                                     </Link>
                                 </li>
                                 <li className="nav-item">
@@ -134,7 +134,7 @@ class Navbar extends Component {
                         </div>
                     </nav>
                 }
-            </div >
+            </div>
         );
     }
 }
