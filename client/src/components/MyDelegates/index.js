@@ -16,7 +16,7 @@ class MyDelegates extends Component {
   render() {
     return (
       <div>
-        <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType}/>
+        <Navbar/>
 
         {/* For logged in admin/advisors, input fields for FULL NAME, EMAIL, & COUNTRY are available */}
     

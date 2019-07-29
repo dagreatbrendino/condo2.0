@@ -91,11 +91,11 @@ class UserDetail extends Component {
                 accessor: event => {
                     let record = event.attendance.filter(record => record.id === this.state.id)[0]
                     console.log(record)
-                    if (record.checkedIn) {
-                        return <div>YES</div>
+                    if (record) {
+                        return record.checkedIn ? <div>YES</div>: <div>NO</div>
                     }
                     else {
-                        return <div>NO</div>
+                        return <></>
                     }
                 }
             }
@@ -103,7 +103,7 @@ class UserDetail extends Component {
 
         return (
             <div>
-                <Navbar loggedIn={this.props.loggedIn} userType={this.props.userType} />
+                <Navbar />
                 <div className="container-fluid mt-5 pt-5">
                     <div className="card border-0 text-center">
                         <div className="card-body">

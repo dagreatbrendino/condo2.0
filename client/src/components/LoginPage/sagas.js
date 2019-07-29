@@ -16,6 +16,10 @@ function loginAPI ( email, password ){
         firstLog: false
     })
     .then(response => {
+        console.log("login response ", response)
+        if (!response.data.name){
+            throw "Invalid Credentials"
+        }
         return response.data
         })
 }
@@ -47,7 +51,7 @@ function* loginFlow ( email, password ){
             window.location.assign("/login")
         }
     }
-    return user
+    return user 
 }
 
 function* loginWatcher (){
@@ -57,8 +61,8 @@ function* loginWatcher (){
         console.log("login requested")
         const task = yield fork(loginFlow, email, password)
 
-        const action = yield take(["USER_UNSET, LOGIN_ERROR"])
-
+        const action = yield take(["USER_UNSET", "LOGIN_ERROR"])
+        console.log("action" ,action)
         if (action.type === "USER_UNSET") yield cancel(task)
 
         yield call(logout)
