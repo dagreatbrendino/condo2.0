@@ -120,19 +120,19 @@ io.on('connection', (socket) => {
 
 //When force sync is set to true it will wipe the DB and create the accounts below. If you need to 
 //rest the db, change force to true and uncomment the items in the function below.
-db.sync({ force: true }).then(function () {
-  models.School.create({name: "School 1"})
-  models.School.create({name: "Other"})
-  models.Committee.create({name: "Committee 1"})
-  models.Committee.create({name: "Admin Committee"})
-  models.Committee.create({name: "Advisor Committee"})
-  models.User.create(admin).catch(err=> console.log(err))
-  models.User.create(advisor).catch(err=> console.log(err))
-  models.User.create(staff).catch(err=> console.log(err))
-  models.User.create(delegate).catch(err=> console.log(err))
-  models.User.create(delegate2).catch(err=> console.log(err))
-  models.User.create(delegate3).catch(err=> console.log(err))
-  models.User.create(delegate4).catch(err=> console.log(err))
+db.sync({ force: false }).then(function () {
+  // models.School.create({name: "School 1"})
+  // models.School.create({name: "Other"})
+  // models.Committee.create({name: "Committee 1"})
+  // models.Committee.create({name: "Admin Committee"})
+  // models.Committee.create({name: "Advisor Committee"})
+  // models.User.create(admin).catch(err=> console.log(err))
+  // models.User.create(advisor).catch(err=> console.log(err))
+  // models.User.create(staff).catch(err=> console.log(err))
+  // models.User.create(delegate).catch(err=> console.log(err))
+  // models.User.create(delegate2).catch(err=> console.log(err))
+  // models.User.create(delegate3).catch(err=> console.log(err))
+  // models.User.create(delegate4).catch(err=> console.log(err))
 });
 
 // Send every request to the React app
