@@ -41,7 +41,9 @@ const admin = {
   password: "password",
   name: "admin account",
   userType: "admin",
-  firstLog: false
+  firstLog: false,
+  schoolId: 2,
+  committeeId: 2,
 }
 const advisor = {
   email: "advisor@mail.com",
@@ -49,7 +51,8 @@ const advisor = {
   name: "advisor account",
   userType: "advisor",
   firstLog: false,
-  // schoolId: 99,
+  schoolId: 1,
+  committeeId: 3,
 }
 const staff = {
   email: "staff@mail.com",
@@ -58,6 +61,7 @@ const staff = {
   userType: "staff",
   firstLog: false,
   committeeId: 1,
+  schoolId: 2,
 }
 const delegate = {
   email: "delegate@mail.com",
@@ -117,8 +121,11 @@ io.on('connection', (socket) => {
 //When force sync is set to true it will wipe the DB and create the accounts below. If you need to 
 //rest the db, change force to true and uncomment the items in the function below.
 db.sync({ force: false }).then(function () {
-  // models.School.create({name: "None"})
-  // models.Committee.create({name: "None"})
+  // models.School.create({name: "School 1"})
+  // models.School.create({name: "Other"})
+  // models.Committee.create({name: "Committee 1"})
+  // models.Committee.create({name: "Admin Committee"})
+  // models.Committee.create({name: "Advisor Committee"})
   // models.User.create(admin).catch(err=> console.log(err))
   // models.User.create(advisor).catch(err=> console.log(err))
   // models.User.create(staff).catch(err=> console.log(err))
