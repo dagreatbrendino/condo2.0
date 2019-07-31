@@ -240,7 +240,7 @@ class MeasureDetail extends Component {
                 <div className="container-fluid my-5 pt-4">
                     <div className="row justify-content-center">
                         <div className="col-lg-10 mt-5">
-                            <h1 className="divTitle mb-3">Measure: <span className="h1 text-50">{this.state.name}</span></h1>
+                            <h1 className="divTitle pl-2 mb-3">Measure: <span className="h1 text-50">{this.state.name}</span></h1>
                             
                             <div className="mb-3">
                                 <span className="h5 border-right border-secondary pr-3"><b>Event:</b> {this.state.eventName}</span>

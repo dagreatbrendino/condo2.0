@@ -23,7 +23,7 @@ class MyDelegates extends Component {
           <div className="container mt-5 pt-5 createUserContainer">
             <div className="row justify-content-around">
               <div className="col-lg-12">
-              <h1 className="mb-3">My Delegates</h1>
+              <h1 className="divTitle pl-2 mb-3">My Delegates</h1>
                 <MyUsers />
               </div>
             </div>

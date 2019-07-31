@@ -23,8 +23,10 @@
 }
 
 .divTitle {
-	font-weight: 600;
-	color: rgba(147, 147, 149, 0.76);
+	/* font-weight: 600; */
+	color: rgb(88, 88, 88);
+	text-transform: none;
+	border-left: 4px solid #dc3545;
 }
 
 .checkedin-msg {

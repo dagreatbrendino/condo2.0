@@ -296,7 +296,7 @@ class Event extends Component {
                                 </div>
 
                                 <div className="col mt-5">
-                                    <h1 className="divTitle">Measures</h1>
+                                    <h1 className="divTitle pl-2">Measures</h1>
                                     {/* if the user is not a delegate they can create measures */}
                                     {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                         <CreateMeasure attendees={this.state.attendance} eventId={this.props.match.params.id} />
@@ -311,7 +311,7 @@ class Event extends Component {
                                 {/* if the user is not a delegate they can see attendance for event */}
                                 {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                     <div className="col-lg-9 mt-5">
-                                        <h1 className="divTitle">Attendance</h1>
+                                        <h1 className="divTitle pl-2">Attendance</h1>
                                         {this.state.allSchools.length !== 0 && this.state.allCommittees.length !== 0 && this.state.attendance.length !== 0 ?
                                             <ReactTable data={this.state.attendance} columns={columns} defaultPageSize={10} filterable
                                                 defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value} minRows={0}
