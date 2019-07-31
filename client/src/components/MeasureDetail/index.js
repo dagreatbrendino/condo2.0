@@ -87,12 +87,12 @@ class MeasureDetail extends Component {
                                     //if affirmative votes are more than half the votes, then the measure passed
                                     if (affirmative > (this.state.voteTally.length / 2)) {
                                         API.updateMeasure(this.state.id, { result: true });
-                                        this.setState({result: res.data.result})
+                                        this.setState({ result: res.data.result })
                                     }
                                     //otherwise it failed
                                     else {
                                         API.updateMeasure(this.state.id, { result: false });
-                                        this.setState({result: res.data.result})
+                                        this.setState({ result: res.data.result })
                                     }
                                 }
                             });
@@ -214,8 +214,8 @@ class MeasureDetail extends Component {
                 id: "countryName",
                 accessor: "country",
                 filterMethod: (filter, rows) =>
-                matchSorter(rows, filter.value, { keys: ["countryName"] }),
-                    filterAll: true,
+                    matchSorter(rows, filter.value, { keys: ["countryName"] }),
+                filterAll: true,
             },
             {
                 Header: "Votes",
@@ -229,20 +229,21 @@ class MeasureDetail extends Component {
                     }
                 },
                 filterMethod: (filter, rows) =>
-                matchSorter(rows, filter.value, { keys: ["delegateVote"] }),
-                    filterAll: true,
+                    matchSorter(rows, filter.value, { keys: ["delegateVote"] }),
+                filterAll: true,
             }
         ];
 
         return (
             <div>
-                <Navbar/>
+                <Navbar />
                 <div className="container-fluid mt-5 pt-4">
                     <div className="row justify-content-center">
                         <div className="col-lg-10 mt-5">
                             <h3 className="divTitle">Measure:</h3>
                             <h1 className="display-4"><b>{this.state.name} for {this.state.committeeName} during {this.state.eventName}</b></h1>
-                            {/* if the user is admin or staff, they can open up/ close voting */}
+
+                            {/* if the user is admin or staff, they can open up/close voting, otherwise show an empty div */}
                             {this.props.useragent.type === "admin" || this.props.useragent.type === "staff" ?
                                 this.state.open ?
                                     <div>
@@ -267,21 +268,27 @@ class MeasureDetail extends Component {
                                 }
                             </div>
 
-
-                            {/* if voting is open, then the delegate can vote */}
-                            {this.state.open ?
+                            {/* if voting is open, then activate buttons for delegates to vote */}
+                            {this.props.useragent.type === "delegate" ? this.state.open ?
                                 <div>
                                     <button className="btn btn-outline-success mr-2 mb-2 px-3" onClick={this.castYes}>Vote Yes <i className="far fa-thumbs-up"></i></button>
                                     <button className="btn btn-outline-danger mb-2 px-3" onClick={this.castNo}>Vote No <i className="far fa-thumbs-down"></i></button>
                                 </div>
                                 :
                                 <div>
-                                    <button className="btn btn-outline-secondary mr-2 mb-2 px-3" disabled>Vote Yes <i className="far fa-thumbs-up"></i></button><button className="btn btn-outline-secondary mb-2 px-3" disabled>Vote No <i className="far fa-thumbs-down"></i></button></div>}
+                                    <button className="btn btn-outline-secondary mr-2 mb-2 px-3" disabled>Vote Yes <i className="far fa-thumbs-up"></i></button>
+                                    <button className="btn btn-outline-secondary mb-2 px-3" disabled>Vote No <i className="far fa-thumbs-down"></i></button>
+                                </div>
+                                :
+                                <div />
+                            }
+
                             <ReactTable data={this.state.voteTally} columns={columns} defaultPageSize={10} filterable
                                 defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value} minRows={0}
                                 pageSize={this.state.pageSize}
-                                onPageSizeChange={(pageSize, pageIndex) => {this.setState({pageSize: pageSize})}}  
+                                onPageSizeChange={(pageSize, pageIndex) => { this.setState({ pageSize: pageSize }) }}
                             />
+
                         </div>
                     </div>
                 </div>
