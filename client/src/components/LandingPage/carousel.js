@@ -26,8 +26,8 @@ class Carousel extends Component {
                                 <div className="carousel-item active">
                                     <img src={image1} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
-                                        <h1 className="display-2">con.DO</h1>
-                                        <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
+                                        <h1 className="display-3 carousel-title">con.DO</h1>
+                                        <h2 className="">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
                                                 className="mr-3 pb-0 text-danger"
@@ -46,8 +46,8 @@ class Carousel extends Component {
                                 <div className="carousel-item">
                                     <img src={image2} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
-                                        <h1 className="display-2">con.DO</h1>
-                                        <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
+                                        <h1 className="display-3 carousel-title">con.DO</h1>
+                                        <h2 className="">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
                                                 className="mr-3 pb-0 text-danger"
@@ -55,7 +55,7 @@ class Carousel extends Component {
                                                 to="demo"
                                                 smooth={true}
                                                 spy={true}
-                                                offset={-80}
+                                                offset={-95}
                                                 duration={500}
                                             >
                                                 <i className="fab fa-youtube fa-5x"></i>
@@ -66,8 +66,8 @@ class Carousel extends Component {
                                 <div className="carousel-item">
                                     <img src={image3} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
-                                        <h1 className="display-2">con.DO</h1>
-                                        <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
+                                        <h1 className="display-3 carousel-title">con.DO</h1>
+                                        <h2 className="">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
                                                 className="mr-3 pb-0 text-danger"
@@ -75,7 +75,7 @@ class Carousel extends Component {
                                                 to="demo"
                                                 smooth={true}
                                                 spy={true}
-                                                offset={-80}
+                                                offset={-95}
                                                 duration={500}
                                             >
                                                 <i className="fab fa-youtube fa-5x"></i>
@@ -86,8 +86,8 @@ class Carousel extends Component {
                                 <div className="carousel-item">
                                     <img src={image4} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
-                                        <h1 className="display-2">con.DO</h1>
-                                        <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
+                                        <h1 className="display-3 carousel-title">con.DO</h1>
+                                        <h2 className="">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
                                                 className="mr-3 pb-0 text-danger"
@@ -95,7 +95,7 @@ class Carousel extends Component {
                                                 to="demo"
                                                 smooth={true}
                                                 spy={true}
-                                                offset={-80}
+                                                offset={-95}
                                                 duration={500}
                                             >
                                                 <i className="fab fa-youtube fa-5x"></i>
@@ -106,8 +106,8 @@ class Carousel extends Component {
                                 <div className="carousel-item">
                                     <img src={image5} className="d-block vw-100 vh-100 carousel-img" alt="" />
                                     <div className="carouselCaption">
-                                        <h1 className="display-2">con.DO</h1>
-                                        <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
+                                        <h1 className="display-3 carousel-title">con.DO</h1>
+                                        <h2 className="">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
                                                 className="mr-3 pb-0 text-danger"
@@ -115,7 +115,7 @@ class Carousel extends Component {
                                                 to="demo"
                                                 smooth={true}
                                                 spy={true}
-                                                offset={-80}
+                                                offset={-95}
                                                 duration={500}
                                             >
                                                 <i className="fab fa-youtube fa-5x"></i>

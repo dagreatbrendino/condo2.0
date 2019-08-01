@@ -39,11 +39,15 @@ class ContactForm extends Component {
 
     render() {
         return (
-            <div className="container-fluid vh-100 mt-5" id="contact">
-                <div className="row text-center align-items-center">
-                    <div className="col">
-                        <p className="display-4 text-center mt-4">Contact Us</p>
-                        <p className="lead">Tell us about your next upcoming event and we'll customize our app to fit your needs</p>
+            <div className="container vh-100 mt-5" id="contact">
+                <div className="row">
+                    <div className="col d-flex justify-content-center">
+                        <h1 className="display-4 ft-title text-center mt-4 pl-3"><b>Contact Us</b></h1>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col d-flex justify-content-center">
+                    <h3 className="lead my-4">Tell us about your upcoming conference or big event and we'll custom tailor our app to fit your unique needs!</h3>
                     </div>
                 </div>
                 <div className="row justify-content-center">

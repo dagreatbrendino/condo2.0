@@ -4,9 +4,9 @@ export class DemoVideo extends Component {
     render() {
         return (
             <div class="container" id="demo">
-                <div className="row text-center">
-                    <div className="col">
-                        <h3 className="display-4 mb-3 ft-title">Demo Video</h3>
+                <div className="row">
+                    <div className="col d-flex justify-content-center">
+                        <h1 className="display-4 mb-3 ft-title pl-3"><b>Demo Video</b></h1>
                     </div>
                 </div>
                 <div className="row text-center">

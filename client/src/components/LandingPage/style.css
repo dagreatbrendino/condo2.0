@@ -1,6 +1,6 @@
 /* CAROUSEL */
 
-.display-2 {
+.carousel-title {
     font-family: 'Crimson Text', serif;
     font-weight: 700;
     text-shadow: 3px 2px 8px black;
@@ -11,6 +11,7 @@
     z-index: 100;
     color: #fff;
     text-align: center;
+    text-transform: inherit;
 }
 
 h2 {
@@ -26,6 +27,7 @@ h2 {
     z-index: 100;
     color: #fff;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .youtubeVid {
@@ -50,6 +52,10 @@ h2 {
 
 /* FEATURES */
 
+.ft-title {
+    border-left: 4px solid #dc3545;
+}
+
 .underline {
     border-bottom: 4px solid black;
     font-weight: bold;
@@ -70,7 +76,12 @@ h2 {
 }
 
 .fa-7x:hover {
-    color: rgba(109, 111, 112, 0.966);
+    color: #dc3545;
+    transform: scale(1.25);
+}
+
+.card-text {
+    text-transform: inherit;
 }
 
 /* CONTACT FORM */
@@ -91,6 +102,10 @@ h2 {
 }
 
 /* ABOUT */
+
+.ind-photo:hover {
+    transform: scale(1.15);
+}
 
 .fa-github {
     color: rgb(50, 50, 50);
