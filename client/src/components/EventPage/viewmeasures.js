@@ -46,7 +46,7 @@ class ViewMeasures extends Component {
   render() {
     const columns = [
       {
-        Header: "Name",
+        Header: "Measure Name",
         accessor: "name",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["name"] }),

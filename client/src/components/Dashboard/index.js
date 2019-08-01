@@ -17,11 +17,16 @@ class Dashboard extends Component {
                 <Navbar />
                 <div className="container-fluid mt-5 pt-5">
                     <div className="row">
-                        <div className="col-lg-5 align-self-center">
+                        <div className="col-lg-5 justify-content-center">
                             <UserDashboard />
                         </div>
-                        <div className="col-lg-7 align-self-center mt-5">
+                        <div className="col-lg-7 mt-5 justify-content-center">
                             <div className="container-fluid">
+                                <div className="row">
+                                    <div className="col">
+                                        <h1 className="divTitle pl-2">Schedule of Events</h1>
+                                    </div>
+                                </div>
                                 <div className="row">
                                     {this.props.useragent.type === "admin" ?
                                         <div className="col d-flex justify-content-end mb-2">
@@ -36,7 +41,7 @@ class Dashboard extends Component {
                                     {this.props.useragent.type === "advisor" ?
                                         <div className="col d-flex justify-content-end mb-2">
                                             <a className="btn btn-outline-dark px-3 mr-2" href="/createuser"><i className="fas fa-user-plus mr-2"></i>Create Delegate</a>
-                                           
+
                                         </div>
                                         :
                                         <div></div>
@@ -44,7 +49,7 @@ class Dashboard extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                        <Schedule/>
+                                        <Schedule />
                                     </div>
                                 </div>
                             </div>

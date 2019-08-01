@@ -14,14 +14,14 @@ class AboutPage extends Component {
                         <h1 className="display-3 d-none d-sm-none d-md-none d-lg-block d-xl-block pl-5">Meet</h1>
                         <h1 className="display-3 d-none d-sm-none d-md-none d-lg-block d-xl-block pl-5">Our</h1>
                         <h1 className="display-3 d-none d-sm-none d-md-none d-lg-block d-xl-block pl-5">Team</h1>
-                        <h1 className="display-4 d-xl-none d-lg-none text-center">Meet Our Team</h1>
+                        <h1 className="display-3 d-xl-none d-lg-none text-center">Meet Our Team</h1>
                     </div>
                     <div className="col">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-6 mt-5 mb-4">
                                     <div className="card border-0">
-                                        <div className="row no-gutters">
+                                        <div className="row no-gutters ind-photo">
                                             <div className="col align-self-center">
                                                 <img className="card-img rounded-circle shadow" src={brendan} alt="Team Member: Brendan Kelly" />
                                             </div>
@@ -37,9 +37,9 @@ class AboutPage extends Component {
                                 </div>
                                 <div className="col-md-6 mt-5 mb-4">
                                     <div className="card border-0">
-                                        <div className="row no-gutters">
+                                        <div className="row no-gutters ind-photo">
                                             <div className="col">
-                                                <img className="card-img rounded-circle shadow" src={nicole} alt="Team Member: Nicole Wilsey-Starr" />
+                                                <img className="card-img rounded-circle shadow " src={nicole} alt="Team Member: Nicole Wilsey-Starr" />
                                             </div>
                                             <div className="col align-self-center">
                                                 <div className="card-body">
@@ -55,9 +55,9 @@ class AboutPage extends Component {
                             <div className="row">
                                 <div className="col-md-6 mt-4 mb-4">
                                     <div className="card border-0">
-                                        <div className="row no-gutters">
+                                        <div className="row no-gutters ind-photo">
                                             <div className="col">
-                                                <img className="card-img rounded-circle shadow" src={karen} alt="Team Member: Karen Shea" />
+                                                <img className="card-img rounded-circle shadow " src={karen} alt="Team Member: Karen Shea" />
                                             </div>
                                             <div className="col align-self-center">
                                                 <div className="card-body">
@@ -71,9 +71,9 @@ class AboutPage extends Component {
                                 </div>
                                 <div className="col-md-6 mt-4 mb-4">
                                     <div className="card border-0">
-                                        <div className="row no-gutters">
+                                        <div className="row no-gutters ind-photo">
                                             <div className="col">
-                                                <img className="card-img rounded-circle shadow" src={leah} alt="Team Member: Leah Morris" />
+                                                <img className="card-img rounded-circle shadow " src={leah} alt="Team Member: Leah Morris" />
                                             </div>
                                             <div className="col align-self-center">
                                                 <div className="card-body">

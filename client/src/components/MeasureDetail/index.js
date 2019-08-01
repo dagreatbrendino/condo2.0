@@ -87,12 +87,12 @@ class MeasureDetail extends Component {
                                     //if affirmative votes are more than half the votes, then the measure passed
                                     if (affirmative > (this.state.voteTally.length / 2)) {
                                         API.updateMeasure(this.state.id, { result: true });
-                                        this.setState({result: res.data.result})
+                                        this.setState({ result: res.data.result })
                                     }
                                     //otherwise it failed
                                     else {
                                         API.updateMeasure(this.state.id, { result: false });
-                                        this.setState({result: res.data.result})
+                                        this.setState({ result: res.data.result })
                                     }
                                 }
                             });
@@ -203,7 +203,7 @@ class MeasureDetail extends Component {
         //Our react table will use the voteTally array to populate its rows
         const columns = [
             {
-                Header: "Name",
+                Header: "Delegate Name",
                 accessor: "name",
                 filterMethod: (filter, rows) =>
                     matchSorter(rows, filter.value, { keys: ["name"] }),
@@ -214,8 +214,8 @@ class MeasureDetail extends Component {
                 id: "countryName",
                 accessor: "country",
                 filterMethod: (filter, rows) =>
-                matchSorter(rows, filter.value, { keys: ["countryName"] }),
-                    filterAll: true,
+                    matchSorter(rows, filter.value, { keys: ["countryName"] }),
+                filterAll: true,
             },
             {
                 Header: "Votes",
@@ -229,37 +229,27 @@ class MeasureDetail extends Component {
                     }
                 },
                 filterMethod: (filter, rows) =>
-                matchSorter(rows, filter.value, { keys: ["delegateVote"] }),
-                    filterAll: true,
+                    matchSorter(rows, filter.value, { keys: ["delegateVote"] }),
+                filterAll: true,
             }
         ];
 
         return (
             <div>
-                <Navbar/>
-                <div className="container-fluid mt-5 pt-4">
+                <Navbar />
+                <div className="container-fluid my-5 pt-4">
                     <div className="row justify-content-center">
                         <div className="col-lg-10 mt-5">
-                            <h3 className="divTitle">Measure:</h3>
-                            <h1 className="display-4"><b>{this.state.name} for {this.state.committeeName} during {this.state.eventName}</b></h1>
-                            {/* if the user is admin or staff, they can open up/ close voting */}
-                            {this.props.useragent.type === "admin" || this.props.useragent.type === "staff" ?
-                                this.state.open ?
-                                    <div>
-                                        <button className="btn btn-outline-dark mb-3" onClick={this.closeVoting}>Close Voting</button>
-                                    </div>
-                                    :
-                                    <div>
-                                        <h5 className="mb-2">Voting Is Closed!</h5>
-                                        <button className="btn btn-outline-dark mb-3" onClick={this.openVoting}>Open Voting</button>
-                                    </div>
-                                :
-                                <div />
-                            }
-
+                            <h1 className="divTitle pl-2 mb-3">Measure: <span className="h1 text-50">{this.state.name}</span></h1>
+                            
+                            <div className="mb-3">
+                                <span className="h5 border-right border-secondary pr-3"><b>Event:</b> {this.state.eventName}</span>
+                                <span className="h5 pl-3"><b>Committee:</b> {this.state.committeeName}</span>
+                            </div>
+                            
                             {/* Measure Pass/Fail Result */}
                             <div className="current-result mb-3">
-                                <span className="h5 text-muted">Current Status: </span>
+                                <span className="h5"><b>Current Status: </b></span>
                                 {this.state.result ?
                                     <span className="h5 measure-pass">Passed!</span>
                                     :
@@ -267,21 +257,41 @@ class MeasureDetail extends Component {
                                 }
                             </div>
 
+                            {/* if the user is admin or staff, they can open up/close voting, otherwise show an empty div */}
+                            {this.props.useragent.type === "admin" || this.props.useragent.type === "staff" ?
+                                this.state.open ?
+                                    <div className="close-voting mb-3">
+                                        <button className="btn btn-outline-danger" onClick={this.closeVoting}>Close Voting</button>
+                                    </div>
+                                    :
+                                    <div className="open-voting mb-3">
+                                        <button className="btn btn-outline-success" onClick={this.openVoting}>Open Voting</button>
+                                    </div>
+                                :
+                                <div />
+                            }
 
-                            {/* if voting is open, then the delegate can vote */}
-                            {this.state.open ?
+                            {/* if voting is open, then activate buttons for delegates to vote */}
+                            {this.props.useragent.type === "delegate" ? this.state.open ?
                                 <div>
                                     <button className="btn btn-outline-success mr-2 mb-2 px-3" onClick={this.castYes}>Vote Yes <i className="far fa-thumbs-up"></i></button>
                                     <button className="btn btn-outline-danger mb-2 px-3" onClick={this.castNo}>Vote No <i className="far fa-thumbs-down"></i></button>
                                 </div>
                                 :
                                 <div>
-                                    <button className="btn btn-outline-secondary mr-2 mb-2 px-3" disabled>Vote Yes <i className="far fa-thumbs-up"></i></button><button className="btn btn-outline-secondary mb-2 px-3" disabled>Vote No <i className="far fa-thumbs-down"></i></button></div>}
+                                    <button className="btn btn-outline-secondary mr-2 mb-2 px-3" disabled>Vote Yes <i className="far fa-thumbs-up"></i></button>
+                                    <button className="btn btn-outline-secondary mb-2 px-3" disabled>Vote No <i className="far fa-thumbs-down"></i></button>
+                                </div>
+                                :
+                                <div />
+                            }
+
                             <ReactTable data={this.state.voteTally} columns={columns} defaultPageSize={10} filterable
                                 defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value} minRows={0}
                                 pageSize={this.state.pageSize}
-                                onPageSizeChange={(pageSize, pageIndex) => {this.setState({pageSize: pageSize})}}  
+                                onPageSizeChange={(pageSize, pageIndex) => { this.setState({ pageSize: pageSize }) }}
                             />
+
                         </div>
                     </div>
                 </div>

@@ -253,26 +253,29 @@ class Event extends Component {
 
         return (
             <div>
-                {/* if the user is and admin, advisor, or has a committeeId that matches the event, then they can access the page */}
+                {/* if the user is an admin, advisor, or has a committeeId that matches the event, then they can access the page */}
                 {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.committeeId === this.state.committeeId ?
                     <div>
                         <Navbar/>
-                        <div className="container-fluid mt-5 pt-4">
+                        <div className="container-fluid my-5 pt-4">
                             <div className="row justify-content-center">
                                 <div className="col-lg-3 mt-5">
                                     {/* event info */}
                                     <div class="eventDiv">
-                                        <h1 className="display-4 event-name">{this.state.name}</h1>
-                                        <h4 className="event-info"><span className="border-right border-secondary pr-3">{this.state.start}</span><span className="pl-3">{this.state.location}</span></h4>
+                                        <h1 className="display-4 event-name mb-3">{this.state.name}</h1>
+                                        <div className="event-info mb-3 text-50">
+                                            <span className="h5 border-right border-secondary pr-3">{this.state.start}</span>
+                                            <span className="h5 pl-3">{this.state.location}</span>
+                                        </div>
                                         {/* checked in status of the current user */}
                                         <div className="btnDiv">
                                             {!this.state.checkedIn ?
-                                                <div className="h5 mb-2 notChecked-status" onClick={this.checkInButton}>Not Checked In <i className="fas fa-times"></i></div>
+                                                <div className="h5 mb-3 notChecked-status" onClick={this.checkInButton}>Not Checked In <i className="fas fa-times"></i></div>
                                                 :
-                                                <div className="h5 mb-2 checkedIn-status" disabled={true}>Checked In <i className="fas fa-check"></i></div>
+                                                <div className="h5 mb-3 checkedIn-status" disabled={true}>Checked In <i className="fas fa-check"></i></div>
                                             }
 
-                                            {/*if the user is not a delegate, then they can check in other users  */}
+                                            {/* if the user is not a delegate, then they can check in other users  */}
                                             {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                                 <div>
                                                     <Webcam checkIn={this.checkIn} />
@@ -281,15 +284,19 @@ class Event extends Component {
                                                 :
                                                 <div></div>
                                             }
-
-                                            <button className="btn btn-outline-danger btn-block mt-2" onClick={() => window.location.reload()}>Stop Check In</button>
+                                            
+                                            {this.props.useragent.type === "delegate" ?
+                                                <div />
+                                                :
+                                                <button className="btn btn-outline-danger btn-block mt-2" onClick={() => window.location.reload()}>Stop Check In</button>
+                                            }
                                             
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="col mt-5">
-                                    <h3 className="divTitle">Measures</h3>
+                                    <h1 className="divTitle pl-2">Measures</h1>
                                     {/* if the user is not a delegate they can create measures */}
                                     {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                         <CreateMeasure attendees={this.state.attendance} eventId={this.props.match.params.id} />
@@ -304,7 +311,7 @@ class Event extends Component {
                                 {/* if the user is not a delegate they can see attendance for event */}
                                 {this.props.useragent.type === "admin" || this.props.useragent.type === "advisor" || this.props.useragent.type === "staff" ?
                                     <div className="col-lg-9 mt-5">
-                                        <h3 className="divTitle">Attendance</h3>
+                                        <h1 className="divTitle pl-2">Attendance</h1>
                                         {this.state.allSchools.length !== 0 && this.state.allCommittees.length !== 0 && this.state.attendance.length !== 0 ?
                                             <ReactTable data={this.state.attendance} columns={columns} defaultPageSize={10} filterable
                                                 defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value} minRows={0}

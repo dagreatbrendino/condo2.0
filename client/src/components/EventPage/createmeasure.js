@@ -75,21 +75,21 @@ class CreateMeasure extends Component {
             value={this.state.name}
             onChange={this.handleInputChange}
             name="name"
-            placeholder="Measure Name"
+            placeholder="New Measure"
             className="col form-control border-top-0 border-left-0 border-right-0 border-dark rounded-0 px-1 mx-3"
             id="nameInput"
           />
         </div>
         <label htmlFor="measureType" className="d-none"></label>
         <select 
-          className="col form-control border-dark rounded-0 px-0 ml-3"
+          className="col form-control border-dark px-0 ml-3"
           value={this.state.measureType}
           onChange={this.handleInputChange}
           name="measureType"
           id="measureType">
             <option selected>Choose measure type...</option>
-            <option value="resolution">resolution</option>
-            <option value="procedural">procedural</option>
+            <option value="resolution">Resolution</option>
+            <option value="procedural">Procedural</option>
         </select>
         <button
           className="btn btn-outline-dark px-3 ml-3"
@@ -97,7 +97,7 @@ class CreateMeasure extends Component {
           name="createEvent"
           onClick={this.handleFormSubmit}
         >
-          Add Measure
+          <i className="fas fa-plus mr-2"></i>Add Measure
         </button>
       </form>
     );

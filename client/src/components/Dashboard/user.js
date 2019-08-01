@@ -22,31 +22,31 @@ class UserDashboard extends Component {
     };
 
     getUserInfo = () => {
-                API.getSchools()
-                    .then(schoolRes => {
-                        console.log(schoolRes)
-                        this.setState({
-                            school: schoolRes.data.filter(sch => sch.id === this.props.useragent.schoolId)[0].name
-                        });
-                    });
-                
-                API.getCommittees()
-                    .then(committeeRes => {
-                        this.setState({
-                            committee: committeeRes.data.filter(comm => comm.id === this.props.useragent.committeeId)[0].name
-                        });
-                    });
-
-                const opts = {
-                    type: "image/png",
-                };
-
-                QRCode.toDataURL(" " + this.props.useragent.id, opts, function (err, url) {
-                    if (err) throw err
-
-                    let img = document.getElementById("image");
-                    img.src = url;
+        API.getSchools()
+            .then(schoolRes => {
+                console.log(schoolRes)
+                this.setState({
+                    school: schoolRes.data.filter(sch => sch.id === this.props.useragent.schoolId)[0].name
                 });
+            });
+
+        API.getCommittees()
+            .then(committeeRes => {
+                this.setState({
+                    committee: committeeRes.data.filter(comm => comm.id === this.props.useragent.committeeId)[0].name
+                });
+            });
+
+        const opts = {
+            type: "image/png",
+        };
+
+        QRCode.toDataURL(" " + this.props.useragent.id, opts, function (err, url) {
+            if (err) throw err
+
+            let img = document.getElementById("image");
+            img.src = url;
+        });
     };
 
     render() {
@@ -55,14 +55,16 @@ class UserDashboard extends Component {
         }
         return (
             <div className="card mt-5 border-0 text-center">
-                <div className="card-body">
-                    <h1 className="display-3">{this.props.useragent.name}</h1>
-                    <p className="h3">{this.props.useragent.type}</p>
-                    <p className="h3">{this.state.school}</p>
-                    <p className="h4">{this.state.committee}</p>
-                    <p className="h5">{this.props.useragent.country}</p>
+                <div className="card-body p-0">
+                    <h1 className="display-4 mb-4"><b>{this.props.useragent.name}</b></h1>
+                    <div className="user-info">
+                        <p className="h5"><span className="h5"><b>Role: </b></span>{this.props.useragent.type}</p>
+                        <p className="h5"><span className="h5"><b>School: </b></span>{this.state.school}</p>
+                        <p className="h5"><span className="h5"><b>Committee: </b></span>{this.state.committee}</p>
+                        <p className="h5"><span className="h5"><b>Country: </b></span>{this.props.useragent.country}</p>
+                    </div>
 
-                    <img id="image" style={imageStyle} alt="qr-rendered"/>
+                    <img id="image" style={imageStyle} alt="qr-rendered" />
                 </div>
             </div>
         );
