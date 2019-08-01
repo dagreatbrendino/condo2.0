@@ -30,12 +30,12 @@ class Carousel extends Component {
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
-                                                className="nav-link mr-3 pb-0 text-danger"
+                                                className="mr-3 pb-0 text-danger"
                                                 activeClass="active-link"
                                                 to="demo"
                                                 smooth={true}
                                                 spy={true}
-                                                offset={-80}
+                                                offset={-95}
                                                 duration={500}
                                             >
                                                 <i className="fab fa-youtube fa-5x"></i>
@@ -50,7 +50,7 @@ class Carousel extends Component {
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
-                                                className="nav-link mr-3 pb-0 text-danger"
+                                                className="mr-3 pb-0 text-danger"
                                                 activeClass="active-link"
                                                 to="demo"
                                                 smooth={true}
@@ -70,7 +70,7 @@ class Carousel extends Component {
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
-                                                className="nav-link mr-3 pb-0 text-danger"
+                                                className="mr-3 pb-0 text-danger"
                                                 activeClass="active-link"
                                                 to="demo"
                                                 smooth={true}
@@ -90,7 +90,7 @@ class Carousel extends Component {
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
-                                                className="nav-link mr-3 pb-0 text-danger"
+                                                className="mr-3 pb-0 text-danger"
                                                 activeClass="active-link"
                                                 to="demo"
                                                 smooth={true}
@@ -110,7 +110,7 @@ class Carousel extends Component {
                                         <h2 className="border-top border-bottom border-white">The Ultimate Conference App</h2>
                                         <a className="youtubeVid">
                                             <Link
-                                                className="nav-link mr-3 pb-0 text-danger"
+                                                className="mr-3 pb-0 text-danger"
                                                 activeClass="active-link"
                                                 to="demo"
                                                 smooth={true}
