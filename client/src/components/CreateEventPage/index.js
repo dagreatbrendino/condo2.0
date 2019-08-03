@@ -160,7 +160,7 @@ class CreateEvent extends Component {
           <div className="container-fluid mt-5 mb-3 pt-5">
             <div className="row justify-content-around">
               <div className="col mt-4 border-right border-secondary">
-                <h1 className="display-4 mb-4">Add New Event</h1>
+                <h1 className="divTitle mb-4 pl-2">Add New Event</h1>
                 <div className="panel panel-default">
                   <FormErrors formErrors={this.state.formErrors} />
                 </div>
@@ -272,7 +272,7 @@ class CreateEvent extends Component {
                 </form>
               </div>
               <div className="col">
-                <h1 className="display-4 mb-4 mt-4 pb-3">Added Events</h1>
+                <h1 className="divTitle mb-5 mt-4 pl-2">Added Events</h1>
                 <AllSchedules key={this.state.updateMe} />
               </div>
             </div>
