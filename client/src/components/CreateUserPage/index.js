@@ -257,7 +257,7 @@ class CreateUser extends Component {
           <div className="container-fluid mt-5 pt-5 createUserContainer">
             <div className="row justify-content-around">
               <div className="col border-right border-secondary">
-                <h1 className="display-4 mb-4">Add New User</h1>
+                <h1 className="divTitle mb-4 pl-2">Add New User</h1>
                 <div>
                   {this.state.recentEmail !== "" ? <p>Account Created for {this.state.recentName}, email sent to {this.state.recentEmail}</p> : <div />}
                 </div>
@@ -465,7 +465,7 @@ class CreateUser extends Component {
 
               </div>
               <div className="col mb-5">
-                <h1 className="display-4 mb-4 pb-3">Search Users</h1>
+                <h1 className="divTitle mb-5 pl-2">Search Users</h1>
                 <UserSearch key={this.state.updateMe} />
               </div>
             </div>
